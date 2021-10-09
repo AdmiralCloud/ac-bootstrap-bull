@@ -1,0 +1,18 @@
+{
+  "name": "ac-bootstrap-bull",
+  "version": "0.1.21",
+  "description": "Bull helper",
+  "repository": "admiralcloud/ac-bootstrap-bull",
+  "author": "Mark Poepping <mark.poepping@admiralcloud.com>",
+  "license": "MIT",
+  "dependencies": {
+    "ac-redislock": "^1.0.11",
+    "async": "^3.2.1",
+    "bull": "^3.29.2",
+    "ioredis": "^4.27.10",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0"
+  }
+}
