@@ -1,3 +1,12 @@
+<a name="1.0.1"></a>
+
+## [1.0.1](https://github.com/admiralcloud/ac-bootstrap-bull/compare/v1.0.0..v1.0.1) (2021-10-14 16:09:42)
+
+
+### Bug Fix
+
+* **App:** Fixed init redisLock | MP | [921cff9e1a72f8ff652417a720e6e3db19719e89](https://github.com/admiralcloud/ac-bootstrap-bull/commit/921cff9e1a72f8ff652417a720e6e3db19719e89)    
+Fixed init redisLock
 <a name="1.0.0"></a>
  
 # [1.0.0](https://github.com/admiralcloud/ac-bootstrap-bull/compare/v0.0.1..v1.0.0) (2021-10-14 15:28:35)
