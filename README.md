@@ -23,13 +23,4 @@ acapi.bull = acbBull(acapi)
 acapi.bull.init(bullOptions, done)
 ```
 
-Also make sure to initialize redis-lock (https://github.com/mmpro/ac-redislock) in your application:
-```
-redisLock.init({
-  redis: acapi.redis.acEvents, // redis server instance
-  logger: acapi.log, // logger instance (winston)
-  logLevel: 'silly'
-})
-```
-
 TBC
