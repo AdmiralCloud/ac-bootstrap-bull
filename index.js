@@ -51,6 +51,18 @@ module.exports = function(acapi) {
 
     acapi.aclog.serverInfo(redisConf)
 
+    // Redislock cannot be re-used from parent application, init here again
+    redisLock.init({
+      redis: opts.createClient(),
+      logger: acapi.log,
+      logLevel: 'warn',
+      suppressMismatch: true
+    }, err => {
+      if (err) {
+        acapi.log.error('%s | Init RedisLock | Failed %j', functionName, err)
+      }
+    })
+
     const opts = {
       createClient: (type) => {
         switch (type) {
