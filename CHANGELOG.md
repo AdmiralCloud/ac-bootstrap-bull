@@ -1,3 +1,12 @@
+<a name="1.0.2"></a>
+
+## [1.0.2](https://github.com/admiralcloud/ac-bootstrap-bull/compare/v1.0.1..v1.0.2) (2021-10-15 09:45:36)
+
+
+### Bug Fix
+
+* **App:** Make logLevel for redislock configurable | MP | [247c64dd648ea4086ac6c4d8e7abe7f4cf08979a](https://github.com/admiralcloud/ac-bootstrap-bull/commit/247c64dd648ea4086ac6c4d8e7abe7f4cf08979a)    
+Make logLevel for redislock configurable and fallback to silly
 <a name="1.0.1"></a>
 
 ## [1.0.1](https://github.com/admiralcloud/ac-bootstrap-bull/compare/v1.0.0..v1.0.1) (2021-10-14 16:09:42)
