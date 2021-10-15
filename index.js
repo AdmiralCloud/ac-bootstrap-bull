@@ -68,7 +68,7 @@ module.exports = function(acapi) {
      redisLock.init({
       redis: opts.createClient(),
       logger: acapi.log,
-      logLevel: 'warn',
+      logLevel: _.get(params, 'logLevel', 'silly'),
       suppressMismatch: true
     }, err => {
       if (err) {
