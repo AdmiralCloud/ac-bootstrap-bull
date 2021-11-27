@@ -1,3 +1,16 @@
+<a name="1.0.3"></a>
+
+## [1.0.3](https://github.com/admiralcloud/ac-bootstrap-bull/compare/v1.0.2..v1.0.3) (2021-11-27 07:46:38)
+
+
+### Bug Fix
+
+* **App:** Fixed Redis key, update Redis config, improved function naming | MP | [eafc58717551dc494bb1eae690c7081b44314487](https://github.com/admiralcloud/ac-bootstrap-bull/commit/eafc58717551dc494bb1eae690c7081b44314487)    
+Prepare processing is now postProcessing in order to avoid confusion. Redis config is now prepared for Bull 4 (breaking change in Bull), Fixed Redis key
+### Chores
+
+* **App:** Updated packages | MP | [f55e9cd6e0f984fbeb78eaf35fcbb5604c6c5687](https://github.com/admiralcloud/ac-bootstrap-bull/commit/f55e9cd6e0f984fbeb78eaf35fcbb5604c6c5687)    
+Updated packages
 <a name="1.0.2"></a>
 
 ## [1.0.2](https://github.com/admiralcloud/ac-bootstrap-bull/compare/v1.0.1..v1.0.2) (2021-10-15 09:45:36)
