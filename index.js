@@ -44,9 +44,11 @@ module.exports = function(acapi) {
       port,
       db: _.get(redisConfig, 'db', 3),
       retryStrategy: (times) => {
-        const delay = Math.min(times * 1000, 300000)
+        const delay = Math.min(Math.pow(2, times) * 1000, 300000)
         return delay
-      }
+      },
+      enableReadyCheck: false,
+      maxRetriesPerRequest: null  
     }
 
     acapi.aclog.serverInfo(redisConf)
@@ -201,13 +203,13 @@ module.exports = function(acapi) {
     })
   }
 
-  const prepareProcessing = function(params, cb) {
-    const functionIdentifier = _.padEnd('prepareProcessing', _.get(acapi.config, 'bull.log.functionIdentifierLength'))
+  const postProcesssing = function(params, cb) {
+    const functionIdentifier = _.padEnd('postProcesssing', _.get(acapi.config, 'bull.log.functionIdentifierLength'))
     const jobList = _.get(params, 'jobList') 
     const jobId = _.get(params, 'jobId')
     const that = this
 
-    const redisKey = acapi.config.environment + ':bull:' + _.get(jobList, 'jobList') + ':' + jobId + ':complete:lock'
+    const redisKey = acapi.config.environment + ':bull:' + jobList + ':' + jobId + ':complete:lock'
     const { queueName, jobListConfig } = this.prepareQueue({ jobList, configPath: _.get(params, 'configPath') })
     if (!queueName) return cb({ message: 'queueNameMissing', additionalInfo: params })
     const retentionTime = _.get(jobListConfig, 'retentionTime', _.get(acapi.config, 'bull.retentionTime', 60000))
@@ -232,6 +234,8 @@ module.exports = function(acapi) {
       })
     })
   }
+  const prepareProcessing = postProcesssing
+
 
   /**
    * Shutdown all queues/redis connections
@@ -248,7 +252,8 @@ module.exports = function(acapi) {
     jobLists,
     prepareQueue,
     handleFailedJobs,
-    prepareProcessing,
+    prepareProcessing, // deprecated - please use postProcessing instead
+    postProcesssing,
     addJob,
     removeJob,
     shutdown
