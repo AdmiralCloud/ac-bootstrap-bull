@@ -1,3 +1,16 @@
+<a name="1.0.4"></a>
+
+## [1.0.4](https://github.com/admiralcloud/ac-bootstrap-bull/compare/v1.0.3..v1.0.4) (2021-12-12 14:04:52)
+
+
+### Bug Fix
+
+* **App:** Typo fix - processing with 2 s only | MP | [856d47dc8018f03a4aa2ac8aaade68239e2cd6b7](https://github.com/admiralcloud/ac-bootstrap-bull/commit/856d47dc8018f03a4aa2ac8aaade68239e2cd6b7)    
+Rename postProcesssing (3s) to postProcessing (2s)
+### Chores
+
+* **App:** Updated packages | MP | [d6ca1ef636269aee01b3a15c74f589e317a6f1c9](https://github.com/admiralcloud/ac-bootstrap-bull/commit/d6ca1ef636269aee01b3a15c74f589e317a6f1c9)    
+Updated packages
 <a name="1.0.3"></a>
 
 ## [1.0.3](https://github.com/admiralcloud/ac-bootstrap-bull/compare/v1.0.2..v1.0.3) (2021-11-27 07:46:38)
