@@ -203,8 +203,8 @@ module.exports = function(acapi) {
     })
   }
 
-  const postProcesssing = function(params, cb) {
-    const functionIdentifier = _.padEnd('postProcesssing', _.get(acapi.config, 'bull.log.functionIdentifierLength'))
+  const postProcessing = function(params, cb) {
+    const functionIdentifier = _.padEnd('postProcessing', _.get(acapi.config, 'bull.log.functionIdentifierLength'))
     const jobList = _.get(params, 'jobList') 
     const jobId = _.get(params, 'jobId')
     const that = this
@@ -234,7 +234,7 @@ module.exports = function(acapi) {
       })
     })
   }
-  const prepareProcessing = postProcesssing
+  const prepareProcessing = postProcessing
 
 
   /**
@@ -253,7 +253,7 @@ module.exports = function(acapi) {
     prepareQueue,
     handleFailedJobs,
     prepareProcessing, // deprecated - please use postProcessing instead
-    postProcesssing,
+    postProcessing,
     addJob,
     removeJob,
     shutdown
