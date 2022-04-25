@@ -37,11 +37,10 @@ module.exports = function(acapi) {
 
     const redisServer = _.find(acapi.config.redis.servers, { server: _.get(params, 'redis.server', 'jobProcessing') })
     const redisConfig = _.find(acapi.config.redis.databases, { name: _.get(acapi.config, 'bull.redis.database.name') })
-    const port = acapi.config.localRedis ? 6379 : _.get(redisServer, 'port')
 
     let redisConf = {
       host: _.get(redisServer, 'host', 'localhost'),
-      port,
+      port: _.get(redisServer, 'port', 6379),
       db: _.get(redisConfig, 'db', 3),
       retryStrategy: (times) => {
         const delay = Math.min(Math.pow(2, times) * 1000, 300000)
@@ -49,6 +48,12 @@ module.exports = function(acapi) {
       },
       enableReadyCheck: false,
       maxRetriesPerRequest: null  
+    }
+    
+    if (acapi.config.localRedis) {
+      _.forOwn(acapi.config.localRedis, (val, key) => {
+        _.set(redisConf, key, val)
+      })
     }
 
     acapi.aclog.serverInfo(redisConf)
