@@ -1,3 +1,12 @@
+<a name="1.0.7"></a>
+
+## [1.0.7](https://github.com/admiralcloud/ac-bootstrap-bull/compare/v1.0.6..v1.0.7) (2022-04-25 12:39:03)
+
+
+### Bug Fix
+
+* **App:** Allow all parameters for localRedis | MP | [e658619b936a385bc3f96e6893eb3bc6a541ffa7](https://github.com/admiralcloud/ac-bootstrap-bull/commit/e658619b936a385bc3f96e6893eb3bc6a541ffa7)    
+Allow all parameters for localRedis
 <a name="1.0.6"></a>
 
 ## [1.0.6](https://github.com/admiralcloud/ac-bootstrap-bull/compare/v1.0.5..v1.0.6) (2022-04-25 12:31:49)
