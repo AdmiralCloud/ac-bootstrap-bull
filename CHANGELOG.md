@@ -1,3 +1,13 @@
+<a name="1.0.8"></a>
+
+## [1.0.8](https://github.com/admiralcloud/ac-bootstrap-bull/compare/v1.0.7..v1.0.8) (2022-04-29 12:15:13)
+
+
+### Bug Fix
+
+* **App:** Updated packages | MP | [78229f53df19c7e51d000e8aae91c621e06c4de4](https://github.com/admiralcloud/ac-bootstrap-bull/commit/78229f53df19c7e51d000e8aae91c621e06c4de4)    
+Updated ac-redisLock  
+Related issues: [undefined/undefined#master](undefined/browse/master)
 <a name="1.0.7"></a>
 
 ## [1.0.7](https://github.com/admiralcloud/ac-bootstrap-bull/compare/v1.0.6..v1.0.7) (2022-04-25 12:39:03)
