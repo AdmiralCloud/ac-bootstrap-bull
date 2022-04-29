@@ -6,7 +6,7 @@
   "author": "Mark Poepping <mark.poepping@admiralcloud.com>",
   "license": "MIT",
   "dependencies": {
-    "ac-redislock": "^1.0.11",
+    "ac-redislock": "^2.0.0",
     "async": "^3.2.3",
     "bull": "^4.8.2",
     "ioredis": "^5.0.4",
