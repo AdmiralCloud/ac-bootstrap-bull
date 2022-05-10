@@ -1,3 +1,13 @@
+<a name="1.0.9"></a>
+
+## [1.0.9](https://github.com/admiralcloud/ac-bootstrap-bull/compare/v1.0.8..v1.0.9) (2022-05-10 10:04:47)
+
+
+### Bug Fix
+
+* **App:** Make enableAutoPipelining the default behaviour | MP | [2dbb401619da28329efb248c45f90b24ed79c8d6](https://github.com/admiralcloud/ac-bootstrap-bull/commit/2dbb401619da28329efb248c45f90b24ed79c8d6)    
+Enable enableAutoPipelining for Redis per default  
+Related issues: [/issues#undefined](https://github.com//issues/undefined)
 <a name="1.0.8"></a>
 
 ## [1.0.8](https://github.com/admiralcloud/ac-bootstrap-bull/compare/v1.0.7..v1.0.8) (2022-04-29 12:15:13)
