@@ -1,3 +1,13 @@
+<a name="1.0.10"></a>
+
+## [1.0.10](https://github.com/admiralcloud/ac-bootstrap-bull/compare/v1.0.9..v1.0.10) (2022-05-10 14:08:52)
+
+
+### Bug Fix
+
+* **App:** enableAutoPipelining seems to create issues with Bull - therefore it now defaults to false | MP | [b41a1fecd3897bafb13cb18949067099253374f2](https://github.com/admiralcloud/ac-bootstrap-bull/commit/b41a1fecd3897bafb13cb18949067099253374f2)    
+Some jobs are not correctly processed if enableAutoPipelining is true. Therefore per default is now false.  
+Related issues: [/issues#undefined](https://github.com//issues/undefined)
 <a name="1.0.9"></a>
 
 ## [1.0.9](https://github.com/admiralcloud/ac-bootstrap-bull/compare/v1.0.8..v1.0.9) (2022-05-10 10:04:47)
