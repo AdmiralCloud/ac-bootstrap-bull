@@ -48,7 +48,7 @@ module.exports = function(acapi) {
       },
       enableReadyCheck: false,
       maxRetriesPerRequest: null,
-      enableAutoPipelining: true
+      enableAutoPipelining: _.get(acapi.config, 'bull.enableAutoPipelining', false)
     }
     
     if (acapi.config.localRedis) {
