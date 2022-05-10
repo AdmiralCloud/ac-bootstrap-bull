@@ -47,7 +47,8 @@ module.exports = function(acapi) {
         return delay
       },
       enableReadyCheck: false,
-      maxRetriesPerRequest: null  
+      maxRetriesPerRequest: null,
+      enableAutoPipelining: true
     }
     
     if (acapi.config.localRedis) {
