@@ -87,6 +87,8 @@ module.exports = function(acapi) {
     // create a bull instance for every jobList, to allow concurrency
     _.forEach(_.get(params, 'jobLists'), jobList => {
       const { queueName } = this.prepareQueue(jobList)
+
+      acapi.aclog.hrLine()
       acapi.aclog.listing({ field: 'Queue', value: queueName })
       this.jobLists.push(queueName)
 
@@ -96,13 +98,13 @@ module.exports = function(acapi) {
           // this job's listener is on this API
           acapi.bull[queueName].on('global:completed', _.get(params, 'handlers.global:completed')[_.get(jobList, 'jobList')])
           acapi.bull[queueName].on('global:failed', _.get(params, 'handlers.global:failed', this.handleFailedJobs).bind(this, queueName))  
-          acapi.aclog.listing({ field: '', value: 'Listener activated' })
+          acapi.aclog.listing({ field: 'Listener', value: 'Activated' })
         }
         if (_.get(jobList, 'worker')) {
           // this job's worker is on this API (BatchProcessCollector[jobList])
           let workerFN = _.get(params, 'worker')[_.get(jobList, 'jobList')]
           workerFN(jobList)
-          acapi.aclog.listing({ field: '', value: 'Worker activated' })
+          acapi.aclog.listing({ field: 'Worker', value: 'Activated' })
         }
         if (_.get(jobList, 'autoClean')) {
           acapi.bull[queueName].clean(_.get(jobList, 'autoClean', _.get(acapi.config, 'bull.autoClean')))
