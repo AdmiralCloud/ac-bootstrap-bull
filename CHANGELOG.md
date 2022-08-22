@@ -1,3 +1,23 @@
+<a name="1.0.11"></a>
+
+## [1.0.11](https://github.com/admiralcloud/ac-bootstrap-bull/compare/v1.0.10..v1.0.11) (2022-08-22 09:51:22)
+
+
+### Bug Fix
+
+* **App:** Minor change in logging | MP | [8230da88e44c2bd035352ab7f64fdb103acd33df](https://github.com/admiralcloud/ac-bootstrap-bull/commit/8230da88e44c2bd035352ab7f64fdb103acd33df)    
+Improved logging  
+Related issues: [/issues#undefined](https://github.com//issues/undefined)
+### Chores
+
+* **App:** Updated packages | MP | [ddacc1d26029196d397794aebb6de1fbb780ecb1](https://github.com/admiralcloud/ac-bootstrap-bull/commit/ddacc1d26029196d397794aebb6de1fbb780ecb1)    
+Updated packages  
+Related issues: [undefined/undefined#master](undefined/browse/master)
+### Chores
+
+* **App:** Updated gitignore | MP | [fd5fd7e8f3605194abe702b67131ed79791d5bfa](https://github.com/admiralcloud/ac-bootstrap-bull/commit/fd5fd7e8f3605194abe702b67131ed79791d5bfa)    
+Ignore vscode settingss  
+Related issues: [undefined/undefined#master](undefined/browse/master)
 <a name="1.0.10"></a>
 
 ## [1.0.10](https://github.com/admiralcloud/ac-bootstrap-bull/compare/v1.0.9..v1.0.10) (2022-05-10 14:08:52)
