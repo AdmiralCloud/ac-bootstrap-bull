@@ -1,3 +1,18 @@
+<a name="1.0.12"></a>
+
+## [1.0.12](https://github.com/admiralcloud/ac-bootstrap-bull/compare/v1.0.11..v1.0.12) (2022-12-13 17:55:28)
+
+
+### Bug Fix
+
+* **App:** Fixed an issue when job is null | MP | [f96b61b97459241b0b401e96adc76a6a165331b9](https://github.com/admiralcloud/ac-bootstrap-bull/commit/f96b61b97459241b0b401e96adc76a6a165331b9)    
+In case job is null, we cannot call remove function  
+Related issues: [undefined/undefined#master](undefined/browse/master)
+### Chores
+
+* **App:** Updated packages | MP | [da7c4d5d9e3c6b21a1a7ddd457b4aa6c1b91b521](https://github.com/admiralcloud/ac-bootstrap-bull/commit/da7c4d5d9e3c6b21a1a7ddd457b4aa6c1b91b521)    
+Updated packages  
+Related issues: [undefined/undefined#master](undefined/browse/master)
 <a name="1.0.11"></a>
 
 ## [1.0.11](https://github.com/admiralcloud/ac-bootstrap-bull/compare/v1.0.10..v1.0.11) (2022-08-22 09:51:22)
