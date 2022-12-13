@@ -192,6 +192,7 @@ module.exports = function(acapi) {
     const functionIdentifier = _.padEnd('removeJob', _.get(acapi.config, 'bull.log.functionIdentifierLength'))
     if (_.isNil(job)) {
       acapi.log.error('%s | %s | %s | Job invalid %j', functionName, functionIdentifier, queueName, job)
+      return
     }
     const jobId = _.get(job, 'id')
     const jobListWatchKey = _.get(job, 'data.jobListWatchKey')
