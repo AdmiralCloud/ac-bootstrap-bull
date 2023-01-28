@@ -43,8 +43,9 @@ module.exports = function(acapi) {
       port: _.get(redisServer, 'port', 6379),
       db: _.get(redisConfig, 'db', 3),
       retryStrategy: (times) => {
-        const delay = Math.min(Math.pow(2, times) * 1000, 300000)
-        return delay
+        const retryArray = [1,2,2,5,5,5,10,10,10,10,15]
+        const delay = times < retryArray.length ? retryArray[times] : retryArray.at(retryArray.length)
+        return delay*1000
       },
       enableReadyCheck: false,
       maxRetriesPerRequest: null,
@@ -59,15 +60,26 @@ module.exports = function(acapi) {
 
     acapi.aclog.serverInfo(redisConf)
 
+    const createRedisClient = ({ config, type }) => {
+      const client = new Redis(config)
+      client.on('error', (err) => {
+        acapi.log.error('BULL/REDIS | Problem | %s | %s', type.padEnd(25), _.get(err, 'message'))
+      })
+      client.on('ready', () => {
+        acapi.log.info('BULL/REDIS | Ready | %s', type)
+      })
+      return client
+    }
+
     const opts = {
       createClient: (type) => {
         switch (type) {
           case 'client':
-            return new Redis(redisConf)
+            return createRedisClient({ config: redisConf, type })
           case 'subscriber':
-            return new Redis(redisConf)
+            return createRedisClient({ config: redisConf, type })
           default:
-            return new Redis(redisConf)
+            return createRedisClient({ config: redisConf, type: 'default' })
         }
       }
     }
