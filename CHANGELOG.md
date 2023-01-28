@@ -1,3 +1,13 @@
+<a name="1.0.14"></a>
+
+## [1.0.14](https://github.com/admiralcloud/ac-bootstrap-bull/compare/v1.0.13..v1.0.14) (2023-01-28 18:43:55)
+
+
+### Bug Fix
+
+* **App:** Fixed error handling | MP | [acbaad1bbbe881bba5f61ffe54cd1df3952dc78b](https://github.com/admiralcloud/ac-bootstrap-bull/commit/acbaad1bbbe881bba5f61ffe54cd1df3952dc78b)    
+Improved retry strategy and improved error handling for Redis clients  
+Related issues: [undefined/undefined#master](undefined/browse/master)
 <a name="1.0.13"></a>
 
 ## [1.0.13](https://github.com/admiralcloud/ac-bootstrap-bull/compare/v1.0.12..v1.0.13) (2023-01-28 17:59:43)
