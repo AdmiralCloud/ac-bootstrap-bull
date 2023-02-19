@@ -1,3 +1,15 @@
+<a name="2.0.0"></a>
+ 
+# [2.0.0](https://github.com/admiralcloud/ac-bootstrap-bull/compare/v1.0.14..v2.0.0) (2023-02-19 15:28:13)
+
+
+### Bug Fix
+
+* **App:** Package updates | MP | [6cc3d951bd24470b59e94e5721cc90996accbbf4](https://github.com/admiralcloud/ac-bootstrap-bull/commit/6cc3d951bd24470b59e94e5721cc90996accbbf4)    
+Package updates  
+Related issues: [undefined/undefined#master](undefined/browse/master)
+## BREAKING CHANGES
+* **App:** Node 16+ required
 <a name="1.0.14"></a>
 
 ## [1.0.14](https://github.com/admiralcloud/ac-bootstrap-bull/compare/v1.0.13..v1.0.14) (2023-01-28 18:43:55)
