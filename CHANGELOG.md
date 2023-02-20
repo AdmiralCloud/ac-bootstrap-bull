@@ -1,3 +1,18 @@
+<a name="2.0.1"></a>
+
+## [2.0.1](https://github.com/admiralcloud/ac-bootstrap-bull/compare/v2.0.0..v2.0.1) (2023-02-20 19:06:02)
+
+
+### Bug Fix
+
+* **App:** Reduce loglevel for on-ready event | MP | [fe5f157c216df6b772184a89256a5581c25962aa](https://github.com/admiralcloud/ac-bootstrap-bull/commit/fe5f157c216df6b772184a89256a5581c25962aa)    
+Reduce loglevel for on-ready event  
+Related issues: [undefined/undefined#master](undefined/browse/master)
+### Chores
+
+* **App:** Updated ESLint to 2022 | MP | [ca64ed9ce691e79e8bd26e1096c475b34d432a2d](https://github.com/admiralcloud/ac-bootstrap-bull/commit/ca64ed9ce691e79e8bd26e1096c475b34d432a2d)    
+Updated ESLint to 2022  
+Related issues: [undefined/undefined#master](undefined/browse/master)
 <a name="2.0.0"></a>
  
 # [2.0.0](https://github.com/admiralcloud/ac-bootstrap-bull/compare/v1.0.14..v2.0.0) (2023-02-19 15:28:13)
