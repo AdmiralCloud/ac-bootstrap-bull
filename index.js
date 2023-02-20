@@ -66,7 +66,7 @@ module.exports = function(acapi) {
         acapi.log.error('BULL/REDIS | Problem | %s | %s', type.padEnd(25), _.get(err, 'message'))
       })
       client.on('ready', () => {
-        acapi.log.info('BULL/REDIS | Ready | %s', type)
+        acapi.log.debug('BULL/REDIS | Ready | %s', type)
       })
       return client
     }
