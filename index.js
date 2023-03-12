@@ -60,13 +60,22 @@ module.exports = function(acapi) {
 
     acapi.aclog.serverInfo(redisConf)
 
+    const errorHistory = {}
+
     const createRedisClient = ({ config, type }) => {
       const client = new Redis(config)
       client.on('error', (err) => {
         acapi.log.error('BULL/REDIS | Problem | %s | %s', type.padEnd(25), _.get(err, 'message'))
+        // remember error
+        _.set(errorHistory, type, _.get(err, 'message'))
       })
       client.on('ready', () => {
-        acapi.log.debug('BULL/REDIS | Ready | %s', type)
+        let level = 'silly'
+        if (_.get(errorHistory, type)) {
+          level = 'debug' // log after this type had an error
+          _.unset(errorHistory, type)
+        }
+        acapi.log[level]('BULL/REDIS | Ready | %s', type)
       })
       return client
     }
