@@ -1,3 +1,13 @@
+<a name="2.0.2"></a>
+
+## [2.0.2](https://github.com/admiralcloud/ac-bootstrap-bull/compare/v2.0.1..v2.0.2) (2023-03-12 20:18:16)
+
+
+### Bug Fix
+
+* **App:** Improved READY logging | MP | [0eefda845de3b7cacf6c15ce20954a09eb6442bd](https://github.com/admiralcloud/ac-bootstrap-bull/commit/0eefda845de3b7cacf6c15ce20954a09eb6442bd)    
+Log as silly by default, log as debug if type had an error before.  
+Related issues: [undefined/undefined#master](undefined/browse/master)
 <a name="2.0.1"></a>
 
 ## [2.0.1](https://github.com/admiralcloud/ac-bootstrap-bull/compare/v2.0.0..v2.0.1) (2023-02-20 19:06:02)
