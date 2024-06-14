@@ -187,7 +187,7 @@ module.exports = function(acapi) {
             jobId = _.get(job, 'id')
             return done()
           }).catch(err => {
-            acapi.log.error('%s | %s | %s | Name %s | Adding job failed %j', functionName, functionIdentifier, queueName, name, err)
+            acapi.log.error('%s | %s | %s | Name %s | Adding job failed %j', functionName, functionIdentifier, queueName, name, err?.message)
           })
         }
         else {
@@ -195,7 +195,7 @@ module.exports = function(acapi) {
             jobId = _.get(job, 'id')
             return done()
           }).catch(err => {
-            acapi.log.error('%s | %s | %s | Adding job failed %j', functionName, functionIdentifier, queueName, err)
+            acapi.log.error('%s | %s | %s | Adding job failed %j', functionName, functionIdentifier, queueName, err?.message)
           })
         }
       },
