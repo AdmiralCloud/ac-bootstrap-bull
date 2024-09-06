@@ -1,3 +1,18 @@
+<a name="2.1.0"></a>
+ 
+# [2.1.0](https://github.com/admiralcloud/ac-bootstrap-bull/compare/v2.0.6..v2.1.0) (2024-09-06 12:34:14)
+
+
+### Feature
+
+* **App:** Add parameter ignore for addJob | MP | [89bf456567bb16d7462948dfdf9e772931d7d549](https://github.com/admiralcloud/ac-bootstrap-bull/commit/89bf456567bb16d7462948dfdf9e772931d7d549)    
+This way it is possible to disbale localDevelopment prefix for Bull lists.  
+Related issues: [undefined/undefined#master](undefined/browse/master)
+### Chores
+
+* **App:** Updated packages | MP | [1b34ab342c7147d531ec24a8ae7ac084bb786a4a](https://github.com/admiralcloud/ac-bootstrap-bull/commit/1b34ab342c7147d531ec24a8ae7ac084bb786a4a)    
+Updated packages  
+Related issues: [undefined/undefined#master](undefined/browse/master)
 <a name="2.0.6"></a>
 
 ## [2.0.6](https://github.com/admiralcloud/ac-bootstrap-bull/compare/v2.0.5..v2.0.6) (2024-06-14 16:57:00)
