@@ -23,9 +23,10 @@ module.exports = function(acapi) {
     const jobList = _.get(params, 'jobList')
     const configPath = _.get(params, 'configPath', 'bull')
     const jobListConfig = _.find(_.get(acapi.config, configPath + '.jobLists'), { jobList }) 
+    const ignore = _.get(params, 'ignore')
     if (!jobListConfig) return false
 
-    const queueName = _.get(params, 'customJobList.environment', (acapi.config.environment + (acapi.config.localDevelopment ? acapi.config.localDevelopment : ''))) + '.' + jobList
+    const queueName = _.get(params, 'customJobList.environment', (acapi.config.environment + ((!_.get(ignore, 'localDevelopment') && acapi.config.localDevelopment) ? acapi.config.localDevelopment : ''))) + '.' + jobList
     return { queueName, jobListConfig }
   }
 
@@ -151,7 +152,7 @@ module.exports = function(acapi) {
 
   const addJob = function(jobList, params, cb) {
     const functionIdentifier = _.padEnd('addJob', _.get(acapi.config, 'bull.log.functionIdentifierLength'))
-    const { queueName } = this.prepareQueue({ jobList, configPath: _.get(params, 'configPath'), customJobList: _.get(params, 'customJobList') })
+    const { queueName } = this.prepareQueue({ jobList, configPath: _.get(params, 'configPath'), customJobList: _.get(params, 'customJobList'), ignore: _.get(params, 'ignore') })
     if (!queueName) return cb({ message: 'jobListNotDefined', additionalInfo: { jobList } })
 
     const name = _.get(params, 'name') // named job
