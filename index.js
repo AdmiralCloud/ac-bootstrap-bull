@@ -250,7 +250,7 @@ module.exports = function(acapi) {
         acapi.log.debug('%s | %s | %s | # %s | Already processing', functionName, functionIdentifier, queueName, jobId)
         if (_.isFunction(cb)) return cb(423)
       }
-      if (err) {
+      else if (err) {
         acapi.log.error('%s | %s | %s | # %s | Failed %j', functionName, functionIdentifier, queueName, jobId, err)
         if (_.isFunction(cb)) return cb(err)     
       }
