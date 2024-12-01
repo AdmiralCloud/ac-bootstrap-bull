@@ -3,6 +3,7 @@ const _ = require('lodash')
 const Redis = require('ioredis')
 const async = require('async')
 const redisLock = require('ac-redislock')
+const { v4: uuidV4 } = require('uuid')
 
 
 module.exports = function(acapi) {
@@ -158,8 +159,13 @@ module.exports = function(acapi) {
     const name = _.get(params, 'name') // named job
     const jobPayload = _.get(params, 'jobPayload')
     const jobOptions = _.get(params, 'jobOptions', {})
-    if (_.get(jobPayload, 'jobId')) {
-      _.set(jobOptions, 'jobId', _.get(jobPayload, 'jobId'))
+
+    // prefix jobIds with customerId, make sure to set a jobId (uuidV4)
+    const customerId = _.get(jobPayload, 'customerId')
+    if (customerId) {
+      const plainJobId = _.get(jobOptions, 'jobId') || _.get(jobPayload, 'jobId') || uuidV4()
+      const jobId = plainJobId.startsWith(customerId) ? plainJobId : `${customerId}:::${plainJobId}`
+      _.set(jobOptions, 'jobId', jobId)
     }
 
     const identifier = _.get(params, 'identifier') // e.g. customerId
@@ -227,6 +233,15 @@ module.exports = function(acapi) {
       removeJob: (done) => {
         job.remove()
         return done()
+      },
+      cleanUpActivity: async() => {
+        if (!acapi.redis.mcCache) return
+        const [ customerId, jobIdentifier ] = jobId.split(':::')
+        const redisKey = `${acapi.config.environment}:v5:${customerId}:activities`
+        const multi = acapi.redis.mcCache.multi()
+        multi.hdel(redisKey, jobIdentifier)
+        multi.hdel(redisKey, `${jobIdentifier}:progress`)
+        await multi.exec()
       }
     }, function allDone(err) {
       if (err) acapi.log.error('%s | %s | %s | %s | Failed %j', functionName, functionIdentifier, queueName, jobId, err)
