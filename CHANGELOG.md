@@ -1,3 +1,18 @@
+<a name="2.1.2"></a>
+
+## [2.1.2](https://github.com/admiralcloud/ac-bootstrap-bull/compare/v2.1.1..v2.1.2) (2024-12-01 17:02:13)
+
+
+### Bug Fix
+
+* **App:** Improved jobId creation | MP | [f6ee6e16539230bf089ee05e337b73d6a0288e0c](https://github.com/admiralcloud/ac-bootstrap-bull/commit/f6ee6e16539230bf089ee05e337b73d6a0288e0c)    
+All jobIds should be prefixed with customerId. Job.remove should remove the entry in customer actitivies  
+Related issues: [undefined/undefined#master](undefined/browse/master)
+### Chores
+
+* **App:** Updated packages | MP | [dde087d2753e8531dfd6ce3a25b5c664748119ad](https://github.com/admiralcloud/ac-bootstrap-bull/commit/dde087d2753e8531dfd6ce3a25b5c664748119ad)    
+Updated packages  
+Related issues: [undefined/undefined#master](undefined/browse/master)
 <a name="2.1.1"></a>
 
 ## [2.1.1](https://github.com/admiralcloud/ac-bootstrap-bull/compare/v2.1.0..v2.1.1) (2024-10-13 13:37:17)
