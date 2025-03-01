@@ -8,12 +8,12 @@
   "dependencies": {
     "ac-redislock": "^3.0.0",
     "async": "^3.2.6",
-    "bull": "^4.16.4",
-    "ioredis": "^5.4.1",
+    "bull": "^4.16.5",
+    "ioredis": "^5.5.0",
     "lodash": "^4.17.21"
   },
   "devDependencies": {
-    "ac-semantic-release": "^0.4.3",
-    "eslint": "^9.16.0"
+    "ac-semantic-release": "^0.4.5",
+    "eslint": "^9.21.0"
   }
 }
