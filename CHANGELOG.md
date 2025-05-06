@@ -1,3 +1,14 @@
+ 
+# [3.0.0](https://github.com/admiralcloud/ac-bootstrap-bull/compare/v2.1.3..v3.0.0) (2025-05-06 18:07:40)
+
+
+### Bug Fix
+
+* **App:** Use redisLock@4 | MP | [8661bdea86562e9b0a1ecb1beebc3a9668fc1a11](https://github.com/admiralcloud/ac-bootstrap-bull/commit/8661bdea86562e9b0a1ecb1beebc3a9668fc1a11)    
+Use redisLock@4 and return logs instead of logging to stdout.  
+Related issues:
+## BREAKING CHANGES
+* **App:** Version works with async/await and RedisLock 4
 
 ## [2.1.3](https://github.com/admiralcloud/ac-bootstrap-bull/compare/v2.1.2..v2.1.3) (2025-03-01 07:20:58)
 
