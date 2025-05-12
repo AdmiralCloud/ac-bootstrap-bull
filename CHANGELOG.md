@@ -1,3 +1,17 @@
+
+## [3.0.1](https://github.com/admiralcloud/ac-bootstrap-bull/compare/v3.0.0..v3.0.1) (2025-05-12 07:53:21)
+
+
+### Bug Fix
+
+* **App:** Fixed error handling in case of resource locked | MP | [c778cff150825d3c3ab0c537200f02e770986bfd](https://github.com/admiralcloud/ac-bootstrap-bull/commit/c778cff150825d3c3ab0c537200f02e770986bfd)    
+Use error code 423 and a dedicated error message  
+Related issues:
+### Chores
+
+* **App:** Updated packages | MP | [198889dc02b6b0de7781901a1448f4352f7b78e1](https://github.com/admiralcloud/ac-bootstrap-bull/commit/198889dc02b6b0de7781901a1448f4352f7b78e1)    
+Updated packages  
+Related issues:
  
 # [3.0.0](https://github.com/admiralcloud/ac-bootstrap-bull/compare/v2.1.3..v3.0.0) (2025-05-06 18:07:40)
 
