@@ -259,14 +259,13 @@ module.exports = function(acapi) {
       return result
     }
     catch(e) {
-      if (e === 423) {
+      if (e?.code === 423) {
         acapi.log.debug('%s | %s | %s | # %s | Already processing', functionName, functionIdentifier, queueName, jobId)
-        throw e
       }
       else {
         acapi.log.error('%s | %s | %s | # %s | Failed %j', functionName, functionIdentifier, queueName, jobId, e?.message)
-        throw e    
       }
+      throw e
     }
   }
   const prepareProcessing = postProcessing
