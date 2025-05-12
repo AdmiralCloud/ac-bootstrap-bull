@@ -162,18 +162,24 @@
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.15.tgz#596a1747233694d50f6ad8a7869fcb6f56cf5841"
   integrity sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==
 
-ac-redislock@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/ac-redislock/-/ac-redislock-4.0.0.tgz#0ecfedef025a3b6881e08864778b880b03567821"
-  integrity sha512-BNEbidUOdu+o82ibww+9IGDoGwyl7WOMxss5t4o+qv5BY5AlK7NlztKvu9nQDiaqzV5Umvx+HaJW3SUF+7lG3Q==
+ac-custom-error@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/ac-custom-error/-/ac-custom-error-1.0.3.tgz#6b899ba72c04abb7fe28361400b6055bf7902e63"
+  integrity sha512-hfd0Qz8GhyeGTvhYYJYvrq0Q/WW/DJbMXvMq+YoAlqYsGabTo6Nz8qbDtyPWYIEWnazkKv4IPnnko/Chp+KUpw==
+
+ac-redislock@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/ac-redislock/-/ac-redislock-5.0.0.tgz#8a681699bcf69268921f748d3e34eca2ff0dc470"
+  integrity sha512-Q+uDGe1SlVkqIpzm67sm1/cxvbndNpb3gKvXbj7NsODXVzxWxGZ6y0xoiseODTqFEtf5wNEQPyE1xXyzJ8Smyw==
   dependencies:
-    ac-semantic-release "^0.4.3"
+    ac-custom-error "^1.0.3"
+    ac-semantic-release "^0.4.6"
     async "^3.2.6"
     lodash "^4.17.21"
     node-cache "^5.1.2"
-    uuid "^11.0.3"
+    uuid "^11.1.0"
 
-ac-semantic-release@^0.4.3, ac-semantic-release@^0.4.6:
+ac-semantic-release@^0.4.6:
   version "0.4.6"
   resolved "https://registry.yarnpkg.com/ac-semantic-release/-/ac-semantic-release-0.4.6.tgz#2e51c90034678b3b3687b662d0c26063eb4a58af"
   integrity sha512-6mo6XF1RChyncJvYAzn+e/s4Ww6L7+DZs9Wdo73qWzGH5EKV2VfcysUWCB+lC8ULCUZSNdoWi9lxP8ORB7BFNg==
@@ -1590,7 +1596,7 @@ util-deprecate@^1.0.1:
   resolved "https://registry.yarnpkg.com/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"
   integrity sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==
 
-uuid@^11.0.3:
+uuid@^11.1.0:
   version "11.1.0"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-11.1.0.tgz#9549028be1753bb934fc96e2bca09bb4105ae912"
   integrity sha512-0/A9rDy9P7cJ+8w1c9WD9V//9Wj15Ce2MPz8Ri6032usz+NfePxx5AcN3bN+r6ZL6jEo066/yNYB3tn4pQEx+A==
