@@ -1,4 +1,18 @@
 
+## [3.0.2](https://github.com/admiralcloud/ac-bootstrap-bull/compare/v3.0.1..v3.0.2) (2025-05-14 11:43:39)
+
+
+### Bug Fix
+
+* **App:** Postprocessing: Throw error only if real error | MP | [35b831acbb299adadaa599d829b39494da6b1b44](https://github.com/admiralcloud/ac-bootstrap-bull/commit/35b831acbb299adadaa599d829b39494da6b1b44)    
+If code 423 just log but do not throw an error  
+Related issues:
+### Chores
+
+* **App:** Updated packages | MP | [0657c0c1b8e2e8842b14824768e690b173a8d46e](https://github.com/admiralcloud/ac-bootstrap-bull/commit/0657c0c1b8e2e8842b14824768e690b173a8d46e)    
+Updated packages  
+Related issues:
+
 ## [3.0.1](https://github.com/admiralcloud/ac-bootstrap-bull/compare/v3.0.0..v3.0.1) (2025-05-12 07:53:21)
 
 
