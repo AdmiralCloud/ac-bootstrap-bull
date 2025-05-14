@@ -3,6 +3,7 @@ const _ = require('lodash')
 const Redis = require('ioredis')
 const redisLock = require('ac-redislock')
 const { v4: uuidV4 } = require('uuid')
+const { setTimeout: sleep } = require('node:timers/promises')
 
 
 module.exports = function(acapi) {
@@ -264,8 +265,8 @@ module.exports = function(acapi) {
       }
       else {
         acapi.log.error('%s | %s | %s | # %s | Failed %j', functionName, functionIdentifier, queueName, jobId, e?.message)
+        throw e
       }
-      throw e
     }
   }
   const prepareProcessing = postProcessing
