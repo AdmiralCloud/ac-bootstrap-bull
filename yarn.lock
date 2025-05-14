@@ -167,10 +167,10 @@ ac-custom-error@^1.0.3:
   resolved "https://registry.yarnpkg.com/ac-custom-error/-/ac-custom-error-1.0.3.tgz#6b899ba72c04abb7fe28361400b6055bf7902e63"
   integrity sha512-hfd0Qz8GhyeGTvhYYJYvrq0Q/WW/DJbMXvMq+YoAlqYsGabTo6Nz8qbDtyPWYIEWnazkKv4IPnnko/Chp+KUpw==
 
-ac-redislock@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/ac-redislock/-/ac-redislock-5.0.0.tgz#8a681699bcf69268921f748d3e34eca2ff0dc470"
-  integrity sha512-Q+uDGe1SlVkqIpzm67sm1/cxvbndNpb3gKvXbj7NsODXVzxWxGZ6y0xoiseODTqFEtf5wNEQPyE1xXyzJ8Smyw==
+ac-redislock@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/ac-redislock/-/ac-redislock-5.0.1.tgz#33a53dcf6382611e8505c679f155214b6ee5e2f4"
+  integrity sha512-DT9UpXuNphOgCwXVk19DBm7xm2wFXzAK0FbmDKQxILIls6d0PA0g+v05Hf4HKxa2PgsbYKn6x1w7q3una6apwg==
   dependencies:
     ac-custom-error "^1.0.3"
     ac-semantic-release "^0.4.6"
