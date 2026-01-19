@@ -11,12 +11,12 @@
   "dependencies": {
     "ac-redislock": "^6.0.0",
     "bull": "^4.16.5",
-    "ioredis": "^5.8.2",
+    "ioredis": "^5.9.2",
     "lodash": "^4.17.21"
   },
   "devDependencies": {
     "ac-semantic-release": "^0.4.8",
-    "eslint": "^9.39.1"
+    "eslint": "^9.39.2"
   },
   "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }
