@@ -293,27 +293,27 @@ ac-custom-error@^1.0.5:
   resolved "https://registry.yarnpkg.com/ac-custom-error/-/ac-custom-error-1.0.5.tgz#f61b8f0a5e71f364d46ea041113d5d530df5ef5c"
   integrity sha512-g4klFNE8QxU/wXmeGO8Z+hF/WoBirAnLSc/EVNNC2skKNL6uFkr1cGBF16c0f+b9rIpeLGnhxwhW2jyvCspSng==
 
-ac-redislock@^6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/ac-redislock/-/ac-redislock-6.0.0.tgz#22e658ff973ef5a800ba4eb8eb322114b9695594"
-  integrity sha512-3KECBpOBm6kBK1CBsDQOWw93bPPshPsLbnYA1j+raqUC5JK6rE9y0fsNfw1h2QGD1UEQ9AWmmmphKNTuamljmA==
+ac-redislock@^6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/ac-redislock/-/ac-redislock-6.0.1.tgz#43cf740efdcde2e2abd4c35767bc48bf6ca68d31"
+  integrity sha512-yi96kD07xXuuQlDf3CHghxsAVbtEIa+Sk55kMttACb+Nj7fw1yCSWY5qbSJdheUfFQd24xml+GSArA7osTZ+lg==
   dependencies:
     ac-custom-error "^1.0.5"
-    ac-semantic-release "^0.4.8"
+    ac-semantic-release "^0.4.10"
     async "^3.2.6"
-    lodash "^4.17.21"
+    lodash "^4.17.23"
     node-cache "^5.1.2"
     uuid "^11.1.0"
 
-ac-semantic-release@^0.4.8:
-  version "0.4.8"
-  resolved "https://registry.yarnpkg.com/ac-semantic-release/-/ac-semantic-release-0.4.8.tgz#f9d9767cb72071f2617008ea03e64ce2255d8189"
-  integrity sha512-wmWsF6WCO/h+IAEKjR16x7EndiMZH6NqJ9qU/sn6hIPXQgk6EBm8UoVfmrrSnv/P9A6scJuokOH9fg4MaP1oWQ==
+ac-semantic-release@^0.4.10:
+  version "0.4.10"
+  resolved "https://registry.yarnpkg.com/ac-semantic-release/-/ac-semantic-release-0.4.10.tgz#f03de6dde748992090f083c9a9159a0bc29a4e7e"
+  integrity sha512-WyAsRp9Cz2ueE8/pCCtzWC9Ab2FeplhdERWa7MgHwwhx7PUfNnHo7dbPWJv4rn/KJWnspvPjgUhG9K+EQC6LMw==
   dependencies:
     async "^3.2.6"
     chalk "5.6.2"
-    inquirer "^12.9.6"
-    lodash "^4.17.21"
+    inquirer "^12.11.1"
+    lodash "^4.17.23"
 
 acorn-jsx@^5.3.2:
   version "5.3.2"
@@ -667,7 +667,7 @@ imurmurhash@^0.1.4:
   resolved "https://registry.yarnpkg.com/imurmurhash/-/imurmurhash-0.1.4.tgz#9218b9b2b928a238b13dc4fb6b6d576f231453ea"
   integrity sha512-JmXMZ6wuvDmLiHEml9ykzqO6lwFbof0GG4IkcGaENdCRDDmMVnny7s5HsIgHCbaq0w2MyPhDqkhTUgS2LU2PHA==
 
-inquirer@^12.9.6:
+inquirer@^12.11.1:
   version "12.11.1"
   resolved "https://registry.yarnpkg.com/inquirer/-/inquirer-12.11.1.tgz#3f5770b9ec926b0909e463e42c766f2664f2cc96"
   integrity sha512-9VF7mrY+3OmsAfjH3yKz/pLbJ5z22E23hENKw3/LNSaA/sAt3v49bDRY+Ygct1xwuKT+U+cBfTzjCPySna69Qw==
@@ -795,6 +795,11 @@ lodash@^4.17.21:
   version "4.17.21"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
+
+lodash@^4.17.23:
+  version "4.17.23"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.23.tgz#f113b0378386103be4f6893388c73d0bde7f2c5a"
+  integrity sha512-LgVTMpQtIopCi79SJeDiP0TfWi5CNEc/L/aRdTh3yIvmZXTnheWpKjSZhnvMl8iXbC1tFg9gdHHDMLoV7CnG+w==
 
 luxon@^3.2.1:
   version "3.7.2"
