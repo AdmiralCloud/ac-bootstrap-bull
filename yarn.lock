@@ -3,9 +3,9 @@
 
 
 "@eslint-community/eslint-utils@^4.8.0":
-  version "4.9.0"
-  resolved "https://registry.yarnpkg.com/@eslint-community/eslint-utils/-/eslint-utils-4.9.0.tgz#7308df158e064f0dd8b8fdb58aa14fa2a7f913b3"
-  integrity sha512-ayVFHdtZ+hsq1t2Dy24wCmGXGe4q9Gu3smhLYALJrr473ZH27MsnSL+LKUlimp4BWJqMDMLmPpx/Q9R3OAlL4g==
+  version "4.9.1"
+  resolved "https://registry.yarnpkg.com/@eslint-community/eslint-utils/-/eslint-utils-4.9.1.tgz#4e90af67bc51ddee6cdef5284edf572ec376b595"
+  integrity sha512-phrYmNiYppR7znFEdqgfWHXR6NCkZEK7hwWDHZUjit/2/U0r6XvkDl0SYnoM51Hq7FhCGdLDT6zxCCOY1hexsQ==
   dependencies:
     eslint-visitor-keys "^3.4.3"
 
@@ -238,11 +238,6 @@
   resolved "https://registry.yarnpkg.com/@inquirer/type/-/type-3.0.10.tgz#11ed564ec78432a200ea2601a212d24af8150d50"
   integrity sha512-BvziSRxfz5Ov8ch0z/n3oijRSEcEsHnhggm4xFZe93DHcUCTlutlq9Ox4SVENAfcRD22UQq7T/atg9Wr3k09eA==
 
-"@ioredis/commands@1.4.0":
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/@ioredis/commands/-/commands-1.4.0.tgz#9f657d51cdd5d2fdb8889592aa4a355546151f25"
-  integrity sha512-aFT2yemJJo+TZCmieA7qnYGQooOS7QfNmYrzGtsYd3g9j5iDP8AimYYAesf79ohjbLG12XxC4nG5DyEnC88AsQ==
-
 "@ioredis/commands@1.5.0":
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/@ioredis/commands/-/commands-1.5.0.tgz#3dddcea446a4b1dc177d0743a1e07ff50691652a"
@@ -288,17 +283,17 @@
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.15.tgz#596a1747233694d50f6ad8a7869fcb6f56cf5841"
   integrity sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==
 
-ac-custom-error@^1.0.5:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/ac-custom-error/-/ac-custom-error-1.0.5.tgz#f61b8f0a5e71f364d46ea041113d5d530df5ef5c"
-  integrity sha512-g4klFNE8QxU/wXmeGO8Z+hF/WoBirAnLSc/EVNNC2skKNL6uFkr1cGBF16c0f+b9rIpeLGnhxwhW2jyvCspSng==
+ac-custom-error@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/ac-custom-error/-/ac-custom-error-1.0.6.tgz#59ee303eaa605789009596d5403db5fdcb3cb7ff"
+  integrity sha512-ltxc5X4uQ42OQfJ0ilCOhTaD+SjblTKWoZHw7rApMJsaze1sralbG5Q+6BgEp8dxwWsSfSj2/eA1Ijfe4UjEKQ==
 
-ac-redislock@^6.0.1:
-  version "6.0.1"
-  resolved "https://registry.yarnpkg.com/ac-redislock/-/ac-redislock-6.0.1.tgz#43cf740efdcde2e2abd4c35767bc48bf6ca68d31"
-  integrity sha512-yi96kD07xXuuQlDf3CHghxsAVbtEIa+Sk55kMttACb+Nj7fw1yCSWY5qbSJdheUfFQd24xml+GSArA7osTZ+lg==
+ac-redislock@^6.0.2:
+  version "6.0.2"
+  resolved "https://registry.yarnpkg.com/ac-redislock/-/ac-redislock-6.0.2.tgz#8196694f118b43ed38a77179d91bc01ec3fd6a9d"
+  integrity sha512-t+eyeA3QB/3wnc2LZ8uvwCDEJMQHDnOMMOEmbCkXn2hgMsPPNllibMK7Gdc4tBwt5x+OSvOv3WnmUTXv7md0+Q==
   dependencies:
-    ac-custom-error "^1.0.5"
+    ac-custom-error "^1.0.6"
     ac-semantic-release "^0.4.10"
     async "^3.2.6"
     lodash "^4.17.23"
@@ -554,9 +549,9 @@ espree@^10.0.1, espree@^10.4.0:
     eslint-visitor-keys "^4.2.1"
 
 esquery@^1.5.0:
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/esquery/-/esquery-1.6.0.tgz#91419234f804d852a82dceec3e16cdc22cf9dae7"
-  integrity sha512-ca9pw9fomFcKPvFLXhBKUK90ZvGibiGOvRJNbjljY7s7uq/5YO4BOzcYtJqExdx99rF6aAcnRxHmcUHcz6sQsg==
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/esquery/-/esquery-1.7.0.tgz#08d048f261f0ddedb5bae95f46809463d9c9496d"
+  integrity sha512-Ap6G0WQwcU/LHsvLwON1fAQX9Zp0A2Y6Y/cJBl9r/JbW90Zyg4/zbG6zzKa2OTALELarYHmKu0GhpM5EO+7T0g==
   dependencies:
     estraverse "^5.1.0"
 
@@ -643,9 +638,9 @@ has-flag@^4.0.0:
   integrity sha512-EykJT/Q1KjTWctppgIAgfSO0tKVuZUjhgMr17kqTumMl6Afv3EISleU7qZUzoXDFTAHTDC4NOoG/ZxU3EvlMPQ==
 
 iconv-lite@^0.7.0:
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.7.0.tgz#c50cd80e6746ca8115eb98743afa81aa0e147a3e"
-  integrity sha512-cf6L2Ds3h57VVmkZe+Pn+5APsT7FpqJtEhhieDCvrE2MK5Qk9MyffgQyuxQTm6BChfeZNtcOLHp9IcWRVcIcBQ==
+  version "0.7.2"
+  resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.7.2.tgz#d0bdeac3f12b4835b7359c2ad89c422a4d1cc72e"
+  integrity sha512-im9DjEDQ55s9fL4EYzOAv0yMqmMBSZp6G0VvFyTMPKWxiSBHUj9NW/qqLmXUwXrrM7AvqSlTCfvqRb0cM8yYqw==
   dependencies:
     safer-buffer ">= 2.1.2 < 3.0.0"
 
@@ -680,22 +675,7 @@ inquirer@^12.11.1:
     run-async "^4.0.6"
     rxjs "^7.8.2"
 
-ioredis@^5.3.2:
-  version "5.8.2"
-  resolved "https://registry.yarnpkg.com/ioredis/-/ioredis-5.8.2.tgz#c7a228a26cf36f17a5a8011148836877780e2e14"
-  integrity sha512-C6uC+kleiIMmjViJINWk80sOQw5lEzse1ZmvD+S/s8p8CWapftSaC+kocGTx6xrbrJ4WmYQGC08ffHLr6ToR6Q==
-  dependencies:
-    "@ioredis/commands" "1.4.0"
-    cluster-key-slot "^1.1.0"
-    debug "^4.3.4"
-    denque "^2.1.0"
-    lodash.defaults "^4.2.0"
-    lodash.isarguments "^3.1.0"
-    redis-errors "^1.2.0"
-    redis-parser "^3.0.0"
-    standard-as-callback "^2.1.0"
-
-ioredis@^5.9.2:
+ioredis@^5.3.2, ioredis@^5.9.2:
   version "5.9.2"
   resolved "https://registry.yarnpkg.com/ioredis/-/ioredis-5.9.2.tgz#ffdce2a019950299716e88ee56cd5802b399b108"
   integrity sha512-tAAg/72/VxOUW7RQSX1pIxJVucYKcjFjfvj60L57jrZpYCHC3XN0WCQ3sNYL4Gmvv+7GPvTAjc+KSdeNuE8oWQ==
@@ -791,12 +771,7 @@ lodash.merge@^4.6.2:
   resolved "https://registry.yarnpkg.com/lodash.merge/-/lodash.merge-4.6.2.tgz#558aa53b43b661e1925a0afdfa36a9a1085fe57a"
   integrity sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==
 
-lodash@^4.17.21:
-  version "4.17.21"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
-  integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
-
-lodash@^4.17.23:
+lodash@^4.17.21, lodash@^4.17.23:
   version "4.17.23"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.23.tgz#f113b0378386103be4f6893388c73d0bde7f2c5a"
   integrity sha512-LgVTMpQtIopCi79SJeDiP0TfWi5CNEc/L/aRdTh3yIvmZXTnheWpKjSZhnvMl8iXbC1tFg9gdHHDMLoV7CnG+w==
@@ -833,9 +808,9 @@ msgpackr-extract@^3.0.2:
     "@msgpackr-extract/msgpackr-extract-win32-x64" "3.0.3"
 
 msgpackr@^1.11.2:
-  version "1.11.5"
-  resolved "https://registry.yarnpkg.com/msgpackr/-/msgpackr-1.11.5.tgz#edf0b9d9cb7d8ed6897dd0e42cfb865a2f4b602e"
-  integrity sha512-UjkUHN0yqp9RWKy0Lplhh+wlpdt9oQBYgULZOiFhV3VclSF1JnSQWZ5r9gORQlNYaUKQoR8itv7g7z1xDDuACA==
+  version "1.11.8"
+  resolved "https://registry.yarnpkg.com/msgpackr/-/msgpackr-1.11.8.tgz#8283c79eb6e5d488f6fb3fac4996006baa390614"
+  integrity sha512-bC4UGzHhVvgDNS7kn9tV8fAucIYUBuGojcaLiz7v+P63Lmtm0Xeji8B/8tYKddALXxJLpwIeBmUN3u64C4YkRA==
   optionalDependencies:
     msgpackr-extract "^3.0.2"
 
