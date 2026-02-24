@@ -3,7 +3,6 @@ const _ = require('lodash')
 const Redis = require('ioredis')
 const redisLock = require('ac-redislock')
 const { v4: uuidV4 } = require('uuid')
-const { setTimeout: sleep } = require('node:timers/promises')
 
 
 module.exports = function(acapi) {
@@ -26,7 +25,7 @@ module.exports = function(acapi) {
     const configPath = _.get(params, 'configPath', 'bull')
     const jobListConfig = _.find(_.get(acapi.config, configPath + '.jobLists'), { jobList }) 
     const ignore = _.get(params, 'ignore')
-    if (!jobListConfig) return false
+    if (!jobListConfig) { return false }
 
     const queueName = _.get(params, 'customJobList.environment', (acapi.config.environment + ((!_.get(ignore, 'localDevelopment') && acapi.config.localDevelopment) ? acapi.config.localDevelopment : ''))) + '.' + jobList
     return { queueName, jobListConfig }
@@ -40,7 +39,7 @@ module.exports = function(acapi) {
     const redisServer = _.find(acapi.config.redis.servers, { server: _.get(params, 'redis.server', 'jobProcessing') })
     const redisConfig = _.find(acapi.config.redis.databases, { name: _.get(acapi.config, 'bull.redis.database.name') })
 
-    let redisConf = {
+    const redisConf = {
       host: _.get(redisServer, 'host', 'localhost'),
       port: _.get(redisServer, 'port', 6379),
       db: _.get(redisConfig, 'db', 3),
@@ -122,7 +121,7 @@ module.exports = function(acapi) {
         }
         if (_.get(jobList, 'worker')) {
           // this job's worker is on this API (BatchProcessCollector[jobList])
-          let workerFN = _.get(params, 'worker')[_.get(jobList, 'jobList')]
+          const workerFN = _.get(params, 'worker')[_.get(jobList, 'jobList')]
           workerFN(jobList)
           logCollector.push({ field: 'Worker', value: 'Activated' })
         }
@@ -152,7 +151,7 @@ module.exports = function(acapi) {
   const addJob = async function(jobList, params) {
     const functionIdentifier = _.padEnd('addJob', _.get(acapi.config, 'bull.log.functionIdentifierLength'))
     const { queueName } = this.prepareQueue({ jobList, configPath: _.get(params, 'configPath'), customJobList: _.get(params, 'customJobList'), ignore: _.get(params, 'ignore') })
-    if (!queueName) throw new ACError('jobListNotDefined', -1, { jobList })
+    if (!queueName) { throw new ACError('jobListNotDefined', -1, { jobList }) }
 
     const name = _.get(params, 'name') // named job
     const jobPayload = _.get(params, 'jobPayload')
@@ -175,13 +174,13 @@ module.exports = function(acapi) {
     let jobListWatchKey
     if (identifierId) {
       const watchKeyParts = []
-      if (acapi.config.localDevelopment) watchKeyParts.push(acapi.config.localDevelopment)
+      if (acapi.config.localDevelopment) { watchKeyParts.push(acapi.config.localDevelopment) }
       watchKeyParts.push(identifierId)
       jobListWatchKey = acapi.config.environment + _.get(acapi.config, 'bull.jobListWatchKey') + _.join(watchKeyParts, ':')
       _.set(jobPayload, 'jobListWatchKey', jobListWatchKey)
     }
     
-    if (!acapi.bull[queueName]) throw new ACError('bullNotAvailableForQueueName', -1, { queueName })
+    if (!acapi.bull[queueName]) { throw new ACError('bullNotAvailableForQueueName', -1, { queueName }) }
     //acapi.log.error('195 %j %j %j %j %j', queueName, name, jobPayload, jobOptions, addToWatchList)
 
     // add job
@@ -249,7 +248,7 @@ module.exports = function(acapi) {
 
     const redisKey = acapi.config.environment + ':bull:' + jobList + ':' + jobId + ':complete:lock'
     const { queueName, jobListConfig } = this.prepareQueue({ jobList, configPath: _.get(params, 'configPath') })
-    if (!queueName) throw new ACError('queueNameMissing', -1, { params })
+    if (!queueName) { throw new ACError('queueNameMissing', -1, { params }) }
     const retentionTime = _.get(jobListConfig, 'retentionTime', _.get(acapi.config, 'bull.retentionTime', 60000))
     
     try {
