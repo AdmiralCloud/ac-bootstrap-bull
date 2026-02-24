@@ -1,4 +1,13 @@
 
+## [3.0.10](https://github.com/admiralcloud/ac-bootstrap-bull/compare/v3.0.9..v3.0.10) (2026-02-24 15:54:57)
+
+
+### Bug Fix
+
+* **Misc:** Package updates | MP | [6d0a34dc389e60bc6f405ea28f532a70e14c6e03](https://github.com/admiralcloud/ac-bootstrap-bull/commit/6d0a34dc389e60bc6f405ea28f532a70e14c6e03)    
+Package updates incl eslint 9 -> 10  
+Related issues:
+
 ## [3.0.9](https://github.com/admiralcloud/ac-bootstrap-bull/compare/v3.0.8..v3.0.9) (2026-02-03 08:12:43)
 
 
