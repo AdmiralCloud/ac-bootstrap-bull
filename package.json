@@ -9,9 +9,9 @@
   "author": "Mark Poepping <mark.poepping@admiralcloud.com>",
   "license": "MIT",
   "dependencies": {
-    "ac-redislock": "^6.0.2",
+    "ac-redislock": "^6.0.4",
     "bull": "^4.16.5",
-    "ioredis": "^5.9.3",
+    "ioredis": "^5.10.0",
     "lodash": "^4.17.23"
   },
   "devDependencies": {
