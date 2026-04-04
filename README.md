@@ -1,6 +1,8 @@
 # AdmiralCloud Bull Queue List
 This helper initialitzes Bull lists and helper functions and makes them available on a globally scoped variable.
 
+[![CodeQL](https://github.com/AdmiralCloud/ac-bootstrap-bull/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/AdmiralCloud/ac-bootstrap-bull/actions/workflows/github-code-scanning/codeql)
+
 # Usage
 ```
 const bullOptions = {
