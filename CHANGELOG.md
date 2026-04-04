@@ -1,3 +1,27 @@
+## [3.0.13](https://github.com/admiralcloud/ac-bootstrap-bull/compare/v3.0.12..v3.0.13) (2026-04-04 10:49:38)
+
+
+### Bug Fix
+
+
+* **App:** Package updates | MP | [f3c59d460e36ec89cddf9ecd0723f31d57892e4e](https://github.com/admiralcloud/ac-bootstrap-bull/commit/f3c59d460e36ec89cddf9ecd0723f31d57892e4e)    
+Package udpates  
+Related issues:
+* **App:** Package updates | MP | [44274e75c86c4dc5dae9b831dd63a492d83a0117](https://github.com/admiralcloud/ac-bootstrap-bull/commit/44274e75c86c4dc5dae9b831dd63a492d83a0117)    
+Package updates  
+Related issues:
+### Tests
+
+
+* **App:** Added tests | MP | [4046d6909ae3525ec71f0bd60ba9b834b935dc08](https://github.com/admiralcloud/ac-bootstrap-bull/commit/4046d6909ae3525ec71f0bd60ba9b834b935dc08)    
+Added tests  
+Related issues:
+### Documentation
+
+
+* **App:** Added badge | MP | [83793ee1d6d33029a05d4ca86aa6cf049ec1c29f](https://github.com/admiralcloud/ac-bootstrap-bull/commit/83793ee1d6d33029a05d4ca86aa6cf049ec1c29f)    
+Added badge for CI  
+Related issues:
 
 ## [3.0.12](https://github.com/admiralcloud/ac-bootstrap-bull/compare/v3.0.11..v3.0.12) (2026-03-21 11:23:53)
 
