@@ -1,3 +1,12 @@
+## [3.0.15](https://github.com/admiralcloud/ac-bootstrap-bull/compare/v3.0.14..v3.0.15) (2026-04-24 18:27:41)
+
+
+### Bug Fix
+
+
+* **App:** Replaced uuid with built-in function | MP | [579b5b2b7ebb9472b58a8298ef2de7122b5863f5](https://github.com/admiralcloud/ac-bootstrap-bull/commit/579b5b2b7ebb9472b58a8298ef2de7122b5863f5)    
+Replaced uuid with built-in function  
+Related issues:
 ## [3.0.14](https://github.com/admiralcloud/ac-bootstrap-bull/compare/v3.0.13..v3.0.14) (2026-04-17 07:53:09)
 
 
