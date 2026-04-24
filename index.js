@@ -2,7 +2,7 @@ const Queue = require('bull')
 const _ = require('lodash')
 const Redis = require('ioredis')
 const redisLock = require('ac-redislock')
-const { v4: uuidV4 } = require('uuid')
+
 
 
 module.exports = function(acapi) {
@@ -160,7 +160,7 @@ module.exports = function(acapi) {
     // prefix jobIds with customerId, make sure to set a jobId (uuidV4)
     const customerId = _.get(jobPayload, 'customerId')
     if (customerId) {
-      const plainJobId = _.get(jobOptions, 'jobId') || _.get(jobPayload, 'jobId') || uuidV4()
+      const plainJobId = _.get(jobOptions, 'jobId') || _.get(jobPayload, 'jobId') || crypto.randomUUID()
       const jobId = plainJobId.startsWith(customerId) ? plainJobId : `${customerId}:::${plainJobId}`
       _.set(jobOptions, 'jobId', jobId)
     }
