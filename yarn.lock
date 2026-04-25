@@ -285,17 +285,17 @@
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.15.tgz#596a1747233694d50f6ad8a7869fcb6f56cf5841"
   integrity sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==
 
-ac-custom-error@^2.0.4:
-  version "2.0.4"
-  resolved "https://registry.yarnpkg.com/ac-custom-error/-/ac-custom-error-2.0.4.tgz#0b81bd96d642267ac209ea35b9a79084899bf3f6"
-  integrity sha512-a5+rgAKbllk9KjN/+Q5Al7rBnr1oiH1K3W5WXHD6jllORfUJ42nS8cTbtlS+akO0Mb6800ifzKMGG8lV+E/Z6w==
+ac-custom-error@^2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/ac-custom-error/-/ac-custom-error-2.0.5.tgz#9d3b61d634145cb2aa904d05d2fc813eadf9bc2f"
+  integrity sha512-BC9NZk6TU6BGv0mjUgkWZr0KJSIlz1nMxKPzbi4X6bkC62MKr6lReOs/e+t+W0DS/0uCo6lr9iFVtACTndM1+g==
 
-ac-redislock@^6.0.7:
-  version "6.0.8"
-  resolved "https://registry.yarnpkg.com/ac-redislock/-/ac-redislock-6.0.8.tgz#6ba566cbb3dbff89d0b05973dd4193d38e07dd2a"
-  integrity sha512-82WKnuEwx7JsbkSdzNxR0q8aK/xCxECsg06fgHpARltX397E/Ig8so5FdkwsoI11hNv4qmEkQsERd73us4Qvpg==
+ac-redislock@^6.0.9:
+  version "6.0.9"
+  resolved "https://registry.yarnpkg.com/ac-redislock/-/ac-redislock-6.0.9.tgz#49369c34e1da01b35fc72fee25eadeaf50236666"
+  integrity sha512-lmsGLGpUVPBNYurZfUTZ3VX0UiPShhvK5JdwaQyreznm2mXNvy/5IE0TIz3GdsIlgwnjPO5Oq+gdvJRZkL+TyA==
   dependencies:
-    ac-custom-error "^2.0.4"
+    ac-custom-error "^2.0.5"
     ac-semantic-release "^1.0.2"
     async "^3.2.6"
     lodash "^4.18.1"
