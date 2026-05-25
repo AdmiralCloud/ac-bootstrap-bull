@@ -191,9 +191,9 @@ module.exports = function(acapi) {
         jobId = _.get(job, 'id')  
       }
       else {
-        const job = acapi.bull[queueName].add(jobPayload, jobOptions)
-        jobId = _.get(job, 'id')  
-    }
+        const job = await acapi.bull[queueName].add(jobPayload, jobOptions)
+        jobId = _.get(job, 'id')
+      }
       // addKeyToWatchList
       if (addToWatchList && !jobListWatchKey && _.isObject(acapi.redis[_.get(acapi.config, 'bull.redis.database.name')])) {
         await acapi.redis[_.get(acapi.config, 'bull.redis.database.name')].hset(jobListWatchKey, jobId, queueName)
