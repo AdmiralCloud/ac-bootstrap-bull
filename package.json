@@ -9,9 +9,9 @@
   "author": "Mark Poepping <mark.poepping@admiralcloud.com>",
   "license": "MIT",
   "dependencies": {
-    "ac-redislock": "^6.0.12",
+    "ac-redislock": "^6.0.14",
     "bull": "^4.16.5",
-    "ioredis": "^5.10.1",
+    "ioredis": "^5.11.1",
     "lodash": "^4.18.1"
   },
   "scripts": {
@@ -20,8 +20,8 @@
   "devDependencies": {
     "ac-semantic-release": "^1.0.2",
     "chai": "^6.2.2",
-    "eslint": "^10.4.0",
-    "globals": "^17.6.0",
+    "eslint": "^10.6.0",
+    "globals": "^17.7.0",
     "mocha": "^11.7.6"
   },
   "resolutions": {
