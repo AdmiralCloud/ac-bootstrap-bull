@@ -14,6 +14,7 @@ module.exports = function(acapi) {
 
   let logCollector = []
   const jobLists = []
+  let myLock
 
     /**
    * Ingests the job list and return the queue name for the environment. ALways use when preparing/using the name.
@@ -97,7 +98,8 @@ module.exports = function(acapi) {
     }
 
      // Redislock cannot be re-used from parent application, init here again
-     await redisLock.init({
+    myLock = redisLock.create()
+    await myLock.init({
       redis: opts.createClient(),
       logger: acapi.log,
       logLevel: _.get(params, 'logLevel', 'silly'),
@@ -252,7 +254,7 @@ module.exports = function(acapi) {
     const retentionTime = _.get(jobListConfig, 'retentionTime', _.get(acapi.config, 'bull.retentionTime', 60000))
     
     try {
-      await redisLock.lockKey({ redisKey })
+      await myLock.lockKey({ redisKey })
       const result = await acapi.bull[queueName].getJob(jobId)
       acapi.log.info('%s | %s | %s | # %s | C/MC %s/%s', functionName, functionIdentifier, queueName, jobId, _.get(result, 'data.customerId', '-'), _.get(result, 'data.mediaContainerId', '-'))
       setTimeout(that.removeJob, retentionTime, result, queueName)

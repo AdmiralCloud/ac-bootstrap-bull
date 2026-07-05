@@ -35,7 +35,11 @@ class MockQueue {
 
 const mockRedisLock = {
   init: async () => {},
-  lockKey: async () => {}
+  lockKey: async () => {},
+  create: () => ({
+    init: async () => {},
+    lockKey: (...args) => mockRedisLock.lockKey(...args)
+  })
 }
 
 function withMockedDeps(fn) {
@@ -540,6 +544,7 @@ describe('ac-bootstrap-bull', () => {
       await withMockedDeps(async (mod) => {
         const acapi = createAcapi()
         const bull = mod(acapi)
+        await bull.init.call(bull, { jobLists: [{ jobList: 'myQueue' }] })
         const mockJob = { id: 'job-1', data: { customerId: 'c1', mediaContainerId: 'm1' } }
         acapi.bull['test.myQueue'] = { getJob: async () => mockJob }
         const result = await bull.postProcessing.call(bull, { jobList: 'myQueue', jobId: 'job-1' })
@@ -555,6 +560,7 @@ describe('ac-bootstrap-bull', () => {
         let debugLogged = false
         acapi.log.debug = () => { debugLogged = true }
         const bull = mod(acapi)
+        await bull.init.call(bull, { jobLists: [{ jobList: 'myQueue' }] })
         const result = await bull.postProcessing.call(bull, { jobList: 'myQueue', jobId: 'job-1' })
         expect(result).to.be.undefined
         expect(debugLogged).to.be.true
@@ -567,6 +573,7 @@ describe('ac-bootstrap-bull', () => {
         mockRedisLock.lockKey = async () => { throw new Error('unexpected') }
         const acapi = createAcapi()
         const bull = mod(acapi)
+        await bull.init.call(bull, { jobLists: [{ jobList: 'myQueue' }] })
         try {
           await bull.postProcessing.call(bull, { jobList: 'myQueue', jobId: 'job-1' })
           expect.fail('expected error')
