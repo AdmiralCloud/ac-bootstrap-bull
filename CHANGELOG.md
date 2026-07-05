@@ -1,3 +1,30 @@
+## [3.0.17](https://github.com/admiralcloud/ac-bootstrap-bull/compare/v3.0.16..v3.0.17) (2026-07-05 14:36:55)
+
+
+### Bug Fix
+
+
+* **App:** Add create() factory for independent redisLock instances | MP | [ed1d3cbf18611253422350f36d477026fd0ccfe7](https://github.com/admiralcloud/ac-bootstrap-bull/commit/ed1d3cbf18611253422350f36d477026fd0ccfe7)    
+Packages sharing ac-redislock as a singleton could overwrite each other\'s Redis connection via init(). The new create() method returns an independent instance with its own closure, allowing each consumer to maintain a separate Redis connection without affecting others.  
+Related issues:
+* **App:** Added missing await | MP | [f17e6ae6c9cba4ff661c5917d331bdc13dc3c04b](https://github.com/admiralcloud/ac-bootstrap-bull/commit/f17e6ae6c9cba4ff661c5917d331bdc13dc3c04b)    
+Fixed adding await for add job.  
+Related issues:
+* **App:** Package updates | MP | [2c32bd10f6bb3c07aa6a2b4c9251e8ee3eaf16c6](https://github.com/admiralcloud/ac-bootstrap-bull/commit/2c32bd10f6bb3c07aa6a2b4c9251e8ee3eaf16c6)    
+Package updates  
+Related issues:
+### Tests
+
+
+* **App:** Improved test coverage | MP | [f421e7670689ff97493e772dffc71ebe16e06a83](https://github.com/admiralcloud/ac-bootstrap-bull/commit/f421e7670689ff97493e772dffc71ebe16e06a83)    
+Improved test coverage  
+Related issues:
+### Chores
+
+
+* **App:** Updated packages | MP | [6c3e0fa88cea2ab41eba462bfa521d2672caf38a](https://github.com/admiralcloud/ac-bootstrap-bull/commit/6c3e0fa88cea2ab41eba462bfa521d2672caf38a)    
+Updated packages  
+Related issues:
 ## [3.0.16](https://github.com/admiralcloud/ac-bootstrap-bull/compare/v3.0.15..v3.0.16) (2026-04-25 08:28:23)
 
 
