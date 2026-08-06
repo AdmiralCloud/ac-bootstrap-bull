@@ -1,3 +1,15 @@
+## [3.0.18](https://github.com/admiralcloud/ac-bootstrap-bull/compare/v3.0.17..v3.0.18) (2026-08-06 14:06:58)
+
+
+### Bug Fix
+
+
+* **App:** Typo fix | MP | [84c6a946cc841c927ee596a3ab3823997e7e7ca2](https://github.com/admiralcloud/ac-bootstrap-bull/commit/84c6a946cc841c927ee596a3ab3823997e7e7ca2)    
+Do not use a non-defined variable as Redis key  
+Related issues:
+* **App:** Package updates | MP | [e109bcd483e774315c01d78a0424fe09f99f7c7c](https://github.com/admiralcloud/ac-bootstrap-bull/commit/e109bcd483e774315c01d78a0424fe09f99f7c7c)    
+Package updates  
+Related issues:
 ## [3.0.17](https://github.com/admiralcloud/ac-bootstrap-bull/compare/v3.0.16..v3.0.17) (2026-07-05 14:36:55)
 
 
