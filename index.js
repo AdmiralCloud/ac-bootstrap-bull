@@ -1,15 +1,16 @@
 const Queue = require('bull')
-const _ = require('lodash')
 const Redis = require('ioredis')
 const redisLock = require('ac-redislock')
 
 
 
 module.exports = function(acapi) {
-  const functionName = _.padEnd('AC-Bull', _.get(acapi.config, 'bull.log.functionNameLength'))
+  const functionName = 'AC-Bull'.padEnd(acapi.config?.bull?.log?.functionNameLength)
 
   const scope = (params) => {
-    _.set(acapi.config, 'bull.redis.database.name', _.get(params, 'redis.config', 'jobProcessing'))
+    if (!acapi.config.bull.redis) acapi.config.bull.redis = {}
+    if (!acapi.config.bull.redis.database) acapi.config.bull.redis.database = {}
+    acapi.config.bull.redis.database.name = params?.redis?.config ?? 'jobProcessing'
   }
 
   let logCollector = []
@@ -17,18 +18,19 @@ module.exports = function(acapi) {
   let myLock
 
     /**
-   * Ingests the job list and return the queue name for the environment. ALways use when preparing/using the name.
+   * Ingests the job list and return the queue name for the environment. Always use when preparing/using the name.
    * @param jobList STRING name of the list
    */
 
   const prepareQueue =  (params) => {
-    const jobList = _.get(params, 'jobList')
-    const configPath = _.get(params, 'configPath', 'bull')
-    const jobListConfig = _.find(_.get(acapi.config, configPath + '.jobLists'), { jobList }) 
-    const ignore = _.get(params, 'ignore')
+    const jobList = params?.jobList
+    const configPath = params?.configPath ?? 'bull'
+    const jobListConfig = (acapi.config[configPath]?.jobLists ?? []).find(item => item.jobList === jobList)
+    const ignore = params?.ignore
     if (!jobListConfig) { return false }
 
-    const queueName = _.get(params, 'customJobList.environment', (acapi.config.environment + ((!_.get(ignore, 'localDevelopment') && acapi.config.localDevelopment) ? acapi.config.localDevelopment : ''))) + '.' + jobList
+    const env = params?.customJobList?.environment ?? (acapi.config.environment + ((!ignore?.localDevelopment && acapi.config.localDevelopment) ? acapi.config.localDevelopment : ''))
+    const queueName = env + '.' + jobList
     return { queueName, jobListConfig }
   }
 
@@ -37,31 +39,31 @@ module.exports = function(acapi) {
     // prepare some vars for this scope of this module
     this.scope(params)
 
-    const redisServer = _.find(acapi.config.redis.servers, { server: _.get(params, 'redis.server', 'jobProcessing') })
-    const redisConfig = _.find(acapi.config.redis.databases, { name: _.get(acapi.config, 'bull.redis.database.name') })
+    const redisServer = acapi.config.redis.servers.find(s => s.server === (params?.redis?.server ?? 'jobProcessing'))
+    const redisConfig = acapi.config.redis.databases.find(d => d.name === acapi.config.bull?.redis?.database?.name)
 
     const redisConf = {
-      host: _.get(redisServer, 'host', 'localhost'),
-      port: _.get(redisServer, 'port', 6379),
-      db: _.get(redisConfig, 'db', 3),
+      host: redisServer?.host ?? 'localhost',
+      port: redisServer?.port ?? 6379,
+      db: redisConfig?.db ?? 3,
       retryStrategy: (times) => {
         const retryArray = [1,2,2,5,5,5,10,10,10,10,15]
-        const delay = times < retryArray.length ? retryArray[times] : retryArray.at(retryArray.length)
+        const delay = times < retryArray.length ? retryArray[times] : retryArray.at(-1)
         return delay*1000
       },
       enableReadyCheck: false,
       maxRetriesPerRequest: null,
-      enableAutoPipelining: _.get(acapi.config, 'bull.enableAutoPipelining', false),
+      enableAutoPipelining: acapi.config?.bull?.enableAutoPipelining ?? false,
       collectOnly: true
     }
-    
+
     if (acapi.config.localRedis) {
-      _.forOwn(acapi.config.localRedis, (val, key) => {
-        _.set(redisConf, key, val)
+      Object.entries(acapi.config.localRedis).forEach(([key, val]) => {
+        redisConf[key] = val
       })
     }
 
-    logCollector = _.concat(logCollector, acapi.aclog.serverInfo(redisConf))
+    logCollector = [...logCollector, ...acapi.aclog.serverInfo(redisConf)]
     logCollector.push({ line: true })
 
     const errorHistory = {}
@@ -69,15 +71,14 @@ module.exports = function(acapi) {
     const createRedisClient = ({ config, type }) => {
       const client = new Redis(config)
       client.on('error', (err) => {
-        acapi.log.error('BULL/REDIS | Problem | %s | %s', type.padEnd(25), _.get(err, 'message'))
-        // remember error
-        _.set(errorHistory, type, _.get(err, 'message'))
+        acapi.log.error('BULL/REDIS | Problem | %s | %s', type.padEnd(25), err?.message)
+        errorHistory[type] = err?.message
       })
       client.on('ready', () => {
         let level = 'silly'
-        if (_.get(errorHistory, type)) {
+        if (errorHistory[type]) {
           level = 'debug' // log after this type had an error
-          _.unset(errorHistory, type)
+          delete errorHistory[type]
         }
         acapi.log[level]('BULL/REDIS | Ready | %s', type)
       })
@@ -102,33 +103,33 @@ module.exports = function(acapi) {
     await myLock.init({
       redis: opts.createClient(),
       logger: acapi.log,
-      logLevel: _.get(params, 'logLevel', 'silly'),
+      logLevel: params?.logLevel ?? 'silly',
       suppressMismatch: true
     })
 
     // create a bull instance for every jobList, to allow concurrency
-    _.forEach(_.get(params, 'jobLists'), jobList => {
+    ;(params?.jobLists ?? []).forEach(jobList => {
       const { queueName } = this.prepareQueue(jobList)
 
       logCollector.push({ field: 'Queue', value: queueName })
       this.jobLists.push(queueName)
 
       acapi.bull[queueName] = new Queue(queueName, opts)
-      if (_.get(params, 'activateListeners')) {
-        if (_.get(jobList, 'listening')) {
+      if (params?.activateListeners) {
+        if (jobList?.listening) {
           // this job's listener is on this API
-          acapi.bull[queueName].on('global:completed', _.get(params, 'handlers.global:completed')[_.get(jobList, 'jobList')])
-          acapi.bull[queueName].on('global:failed', _.get(params, 'handlers.global:failed', this.handleFailedJobs).bind(this, queueName))  
+          acapi.bull[queueName].on('global:completed', params?.handlers?.['global:completed']?.[jobList?.jobList])
+          acapi.bull[queueName].on('global:failed', (params?.handlers?.['global:failed'] ?? this.handleFailedJobs).bind(this, queueName))
           logCollector.push({ field: 'Listener', value: 'Activated' })
         }
-        if (_.get(jobList, 'worker')) {
+        if (jobList?.worker) {
           // this job's worker is on this API (BatchProcessCollector[jobList])
-          const workerFN = _.get(params, 'worker')[_.get(jobList, 'jobList')]
+          const workerFN = params?.worker?.[jobList?.jobList]
           workerFN(jobList)
           logCollector.push({ field: 'Worker', value: 'Activated' })
         }
-        if (_.get(jobList, 'autoClean')) {
-          acapi.bull[queueName].clean(_.get(jobList, 'autoClean', _.get(acapi.config, 'bull.autoClean')))
+        if (jobList?.autoClean) {
+          acapi.bull[queueName].clean(jobList?.autoClean ?? acapi.config?.bull?.autoClean)
         }
       }
     })
@@ -137,7 +138,7 @@ module.exports = function(acapi) {
   }
 
   const handleFailedJobs = (jobList, jobId, err) => {
-    const functionIdentifier = _.padEnd(jobList, _.get(acapi.config, 'bull.log.functionIdentifierLength'))
+    const functionIdentifier = jobList.padEnd(acapi.config?.bull?.log?.functionIdentifierLength)
     acapi.log.error('%s | %s | # %s | Job Failed %j', functionName, functionIdentifier, jobId, err)
   }
 
@@ -151,54 +152,53 @@ module.exports = function(acapi) {
    */
 
   const addJob = async function(jobList, params) {
-    const functionIdentifier = _.padEnd('addJob', _.get(acapi.config, 'bull.log.functionIdentifierLength'))
-    const { queueName } = this.prepareQueue({ jobList, configPath: _.get(params, 'configPath'), customJobList: _.get(params, 'customJobList'), ignore: _.get(params, 'ignore') })
+    const functionIdentifier = 'addJob'.padEnd(acapi.config?.bull?.log?.functionIdentifierLength)
+    const { queueName } = this.prepareQueue({ jobList, configPath: params?.configPath, customJobList: params?.customJobList, ignore: params?.ignore })
     if (!queueName) { throw new ACError('jobListNotDefined', -1, { jobList }) }
 
-    const name = _.get(params, 'name') // named job
-    const jobPayload = _.get(params, 'jobPayload')
-    const jobOptions = _.get(params, 'jobOptions', {})
+    const name = params?.name // named job
+    const jobPayload = params?.jobPayload
+    const jobOptions = params?.jobOptions ?? {}
 
     // prefix jobIds with customerId, make sure to set a jobId (uuidV4)
-    const customerId = _.get(jobPayload, 'customerId')
+    const customerId = jobPayload?.customerId
     if (customerId) {
-      const plainJobId = _.get(jobOptions, 'jobId') || _.get(jobPayload, 'jobId') || crypto.randomUUID()
+      const plainJobId = jobOptions?.jobId || jobPayload?.jobId || crypto.randomUUID()
       const jobId = plainJobId.startsWith(customerId) ? plainJobId : `${customerId}:::${plainJobId}`
-      _.set(jobOptions, 'jobId', jobId)
+      jobOptions.jobId = jobId
     }
 
-    const identifier = _.get(params, 'identifier') // e.g. customerId
-    const identifierId = _.get(jobPayload, identifier)
+    const identifier = params?.identifier // e.g. customerId
+    const identifierId = jobPayload?.[identifier]
     if (!identifierId) {
-      acapi.log.warn('%s | %s | %s | Job has no identifier %j', functionName, functionIdentifier, queueName, params)    
+      acapi.log.warn('%s | %s | %s | Job has no identifier %j', functionName, functionIdentifier, queueName, params)
     }
-    const addToWatchList = _.get(acapi.config, 'bull.jobListWatchKey') && _.get(params, 'addToWatchList', true)
+    const addToWatchList = acapi.config?.bull?.jobListWatchKey && (params?.addToWatchList ?? true)
     let jobListWatchKey
     if (identifierId) {
       const watchKeyParts = []
-      if (acapi.config.localDevelopment) { watchKeyParts.push(acapi.config.localDevelopment) }
+      if (acapi.config.localDevelopment) watchKeyParts.push(acapi.config.localDevelopment)
       watchKeyParts.push(identifierId)
-      jobListWatchKey = acapi.config.environment + _.get(acapi.config, 'bull.jobListWatchKey') + _.join(watchKeyParts, ':')
-      _.set(jobPayload, 'jobListWatchKey', jobListWatchKey)
+      jobListWatchKey = acapi.config.environment + acapi.config?.bull?.jobListWatchKey + watchKeyParts.join(':')
+      jobPayload.jobListWatchKey = jobListWatchKey
     }
-    
+
     if (!acapi.bull[queueName]) { throw new ACError('bullNotAvailableForQueueName', -1, { queueName }) }
-    //acapi.log.error('195 %j %j %j %j %j', queueName, name, jobPayload, jobOptions, addToWatchList)
 
     // add job
     let jobId
     try {
       if (name) {
         const job = await acapi.bull[queueName].add(name, jobPayload, jobOptions)
-        jobId = _.get(job, 'id')  
+        jobId = job?.id
       }
       else {
         const job = await acapi.bull[queueName].add(jobPayload, jobOptions)
-        jobId = _.get(job, 'id')
+        jobId = job?.id
       }
       // addKeyToWatchList
-      if (addToWatchList && jobListWatchKey && _.isObject(acapi.redis[_.get(acapi.config, 'bull.redis.database.name')])) {
-        await acapi.redis[_.get(acapi.config, 'bull.redis.database.name')].hset(jobListWatchKey, jobId, queueName)
+      if (addToWatchList && jobListWatchKey && typeof acapi.redis[acapi.config?.bull?.redis?.database?.name] === 'object') {
+        await acapi.redis[acapi.config?.bull?.redis?.database?.name].hset(jobListWatchKey, jobId, queueName)
       }
     }
     catch(e) {
@@ -209,18 +209,18 @@ module.exports = function(acapi) {
   }
 
   const removeJob = async(job, queueName) => {
-    const functionIdentifier = _.padEnd('removeJob', _.get(acapi.config, 'bull.log.functionIdentifierLength'))
-    if (_.isNil(job)) {
+    const functionIdentifier = 'removeJob'.padEnd(acapi.config?.bull?.log?.functionIdentifierLength)
+    if (job == null) {
       acapi.log.error('%s | %s | %s | Job invalid %j', functionName, functionIdentifier, queueName, job)
       return
     }
-    const jobId = _.get(job, 'id')
-    const jobListWatchKey = _.get(job, 'data.jobListWatchKey')
+    const jobId = job.id
+    const jobListWatchKey = job?.data?.jobListWatchKey
 
     try {
       // removeKeyFromWatchList
-      if (jobListWatchKey && _.isObject(acapi.redis[_.get(acapi.config, 'bull.redis.database.name')])) {
-        await acapi.redis[_.get(acapi.config, 'bull.redis.database.name')].hdel(jobListWatchKey, jobId)
+      if (jobListWatchKey && typeof acapi.redis[acapi.config?.bull?.redis?.database?.name] === 'object') {
+        await acapi.redis[acapi.config?.bull?.redis?.database?.name].hdel(jobListWatchKey, jobId)
       }
 
       // removeJob
@@ -243,20 +243,20 @@ module.exports = function(acapi) {
   }
 
   const postProcessing = async function(params) {
-    const functionIdentifier = _.padEnd('postProcessing', _.get(acapi.config, 'bull.log.functionIdentifierLength'))
-    const jobList = _.get(params, 'jobList') 
-    const jobId = _.get(params, 'jobId')
+    const functionIdentifier = 'postProcessing'.padEnd(acapi.config?.bull?.log?.functionIdentifierLength)
+    const jobList = params?.jobList
+    const jobId = params?.jobId
     const that = this
 
     const redisKey = acapi.config.environment + ':bull:' + jobList + ':' + jobId + ':complete:lock'
-    const { queueName, jobListConfig } = this.prepareQueue({ jobList, configPath: _.get(params, 'configPath') })
+    const { queueName, jobListConfig } = this.prepareQueue({ jobList, configPath: params?.configPath })
     if (!queueName) { throw new ACError('queueNameMissing', -1, { params }) }
-    const retentionTime = _.get(jobListConfig, 'retentionTime', _.get(acapi.config, 'bull.retentionTime', 60000))
-    
+    const retentionTime = jobListConfig?.retentionTime ?? acapi.config?.bull?.retentionTime ?? 60000
+
     try {
       await myLock.lockKey({ redisKey })
       const result = await acapi.bull[queueName].getJob(jobId)
-      acapi.log.info('%s | %s | %s | # %s | C/MC %s/%s', functionName, functionIdentifier, queueName, jobId, _.get(result, 'data.customerId', '-'), _.get(result, 'data.mediaContainerId', '-'))
+      acapi.log.info('%s | %s | %s | # %s | C/MC %s/%s', functionName, functionIdentifier, queueName, jobId, result?.data?.customerId ?? '-', result?.data?.mediaContainerId ?? '-')
       setTimeout(that.removeJob, retentionTime, result, queueName)
       return result
     }
