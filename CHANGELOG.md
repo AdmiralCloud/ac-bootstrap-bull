@@ -1,3 +1,15 @@
+## [3.0.19](https://github.com/admiralcloud/ac-bootstrap-bull/compare/v3.0.18..v3.0.19) (2026-09-02 18:07:06)
+
+
+### Bug Fix
+
+
+* **App:** Removed lodash and fixed minor bugs | MP | [4ae6de6f80a8b7413cc605114954f5e45dd08d1f](https://github.com/admiralcloud/ac-bootstrap-bull/commit/4ae6de6f80a8b7413cc605114954f5e45dd08d1f)    
+Removed lodash and fixed minor bugs  
+Related issues:
+* **App:** Package updates | MP | [497bf5d77b9a589acd2f13b2104fdeb0833a5dc5](https://github.com/admiralcloud/ac-bootstrap-bull/commit/497bf5d77b9a589acd2f13b2104fdeb0833a5dc5)    
+Package updates  
+Related issues:
 ## [3.0.18](https://github.com/admiralcloud/ac-bootstrap-bull/compare/v3.0.17..v3.0.18) (2026-08-06 14:06:58)
 
 
