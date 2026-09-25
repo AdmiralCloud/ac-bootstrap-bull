@@ -1,3 +1,12 @@
+## [3.0.20](https://github.com/admiralcloud/ac-bootstrap-bull/compare/v3.0.19..v3.0.20) (2026-09-25 07:55:54)
+
+
+### Bug Fix
+
+
+* **App:** Package update | VD | [2e78b57d2349587799e84db17adc91224027b763](https://github.com/admiralcloud/ac-bootstrap-bull/commit/2e78b57d2349587799e84db17adc91224027b763)    
+Package update  
+Related issues:
 ## [3.0.19](https://github.com/admiralcloud/ac-bootstrap-bull/compare/v3.0.18..v3.0.19) (2026-09-02 18:07:06)
 
 
